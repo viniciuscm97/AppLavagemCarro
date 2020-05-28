@@ -7,10 +7,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class FormLavagensActivity extends AppCompatActivity {
     private EditText etDataEntrega, etValorLavagem,etQuantidadeLavagem;
     private Button btnSalvarLavagem;
     private Spinner spFuncionarios,spCarros;
+
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,10 @@ public class FormLavagensActivity extends AppCompatActivity {
         etQuantidadeLavagem = findViewById(R.id.etQuantidadeLavagem);
 
         btnSalvarLavagem = findViewById(R.id.btnSalvarLavagem);
+
+
+
+
 
 
     }

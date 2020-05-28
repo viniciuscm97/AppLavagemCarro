@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "459262486650",
+    "firebase_url": "https://lavagemcarros-28641.firebaseio.com",
+    "project_id": "lavagemcarros-28641",
+    "storage_bucket": "lavagemcarros-28641.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459262486650:android:c7ffc0170b449b026cf3c3",
+        "android_client_info": {
+          "package_name": "com.example.appgerenciamentolavagens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459262486650-3l9lpkkbtflis3dh5dk9vmrffmueflf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVFeOSmI4sbFVqBVWcSDqL9taVhV_4bV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459262486650-3l9lpkkbtflis3dh5dk9vmrffmueflf2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
