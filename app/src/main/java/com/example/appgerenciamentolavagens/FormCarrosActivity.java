@@ -17,7 +17,7 @@ public class FormCarrosActivity extends AppCompatActivity {
     private EditText etPlaca,etModelo,etAno,etPortas,etMarca;
     private Button btnSalvarCarro;
 
-    private FirebaseDatabase database;
+
     private DatabaseReference reference;
 
     @Override

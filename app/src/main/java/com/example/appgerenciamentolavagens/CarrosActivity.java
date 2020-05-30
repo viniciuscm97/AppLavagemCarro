@@ -45,8 +45,7 @@ public class CarrosActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-
+        FloatingActionButton fab = findViewById(R.id.fabCarros);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,8 +57,7 @@ public class CarrosActivity extends AppCompatActivity {
             }
         });
 
-
-        lvCarros = findViewById(R.id.lvLavagens);
+        lvCarros = findViewById(R.id.lvCarros);
 
         telaCarros = findViewById(R.id.telaCarros);
 
