@@ -42,6 +42,7 @@ public class CarrosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carros);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -49,10 +50,8 @@ public class CarrosActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String data = getIntent().getExtras().getString("Listaselecionado");
 
                 Intent intent = new Intent(CarrosActivity.this, FormCarrosActivity.class);
-                //intent.putExtra("listaToAdd",data);
                 startActivity( intent );
             }
         });
@@ -83,6 +82,11 @@ public class CarrosActivity extends AppCompatActivity {
                 Carros c = new Carros();
                 c.id = dataSnapshot.getKey();
                 c.data_cadastro = dataSnapshot.child("data_cadastro").getValue(String.class);
+                c.placa = dataSnapshot.child("placa").getValue(String.class);
+                c.modelo = dataSnapshot.child("modelo").getValue(String.class);
+                c.marca = dataSnapshot.child("marca").getValue(String.class);
+                c.portas = dataSnapshot.child("portas").getValue(String.class);
+
 
 
                 carros.add( c );

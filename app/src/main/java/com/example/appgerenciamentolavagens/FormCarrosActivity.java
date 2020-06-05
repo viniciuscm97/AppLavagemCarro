@@ -56,7 +56,7 @@ public class FormCarrosActivity extends AppCompatActivity {
 
 
         if (!placa.isEmpty()&&!modelo.isEmpty()&&!ano.isEmpty()&&!portas.isEmpty()&&!marca.isEmpty()){
-            placa = placa.replace("-", "");
+            //placa = placa.replace("-", "");
             Carros c = new Carros();
 
             c.placa = placa;

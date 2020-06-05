@@ -8,6 +8,6 @@ public class Carros {
     @NonNull
     @Override
     public String toString() {
-        return "modelo: "+modelo;
+        return "Placa: "+placa+" \nModelo: "+ modelo+" \nMarca: "+marca;
     }
 }
