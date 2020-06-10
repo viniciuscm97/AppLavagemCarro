@@ -41,6 +41,8 @@ public class FormFuncActivity extends AppCompatActivity {
         if(!nome.isEmpty()){
             Funcionarios f = new Funcionarios();
 
+            f.nome = nome;
+
             reference = FirebaseDatabase.getInstance().getReference();
 
             reference.child("funcionarios").push().setValue(f);

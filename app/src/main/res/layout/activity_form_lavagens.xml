@@ -6,64 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".FormLavagensActivity">
 
+    <TextView
+        android:id="@+id/tvDataEntrega"
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        android:text="Informe a data de entrega:"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:layout_marginTop="25dp"
+        >
+
+    </TextView>
+
     <EditText
         android:id="@+id/etDataEntrega"
         android:layout_width="335dp"
         android:layout_height="45dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
-
         android:inputType="datetime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.353"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDataEntrega"
         />
     <EditText
         android:id="@+id/etValorLavagem"
         android:layout_width="335dp"
         android:layout_height="45dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Valor:"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.353"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDataEntrega"
         />
-    <EditText
-        android:id="@+id/etQuantidadeLavagem"
-        android:layout_width="335dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="Quantidade:"
-        android:inputType="textPersonName"
+
+    <TextView
+        android:id="@+id/tvFuncionarios"
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        android:text="Funcionário:"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.353"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etValorLavagem"
-        />
+        app:layout_constraintTop_toBottomOf="@id/etValorLavagem"
+        android:textAlignment="center"
+        android:layout_marginTop="40dp"
+        >
+
+    </TextView>
     <Spinner
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.353"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etQuantidadeLavagem"
+        app:layout_constraintTop_toBottomOf="@+id/tvFuncionarios"
         android:id="@+id/spFuncionarios"
         android:layout_width="335dp"
         android:layout_height="45dp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="15dp"/>
+    <TextView
+        android:id="@+id/tvCarros"
+        android:layout_width="330dp"
+        android:layout_height="30dp"
+        android:text="Carro:"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spFuncionarios"
+        android:textAlignment="center"
+        android:layout_marginTop="40dp"
+        >
+
+    </TextView>
 
     <Spinner
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.353"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spFuncionarios"
+        app:layout_constraintTop_toBottomOf="@+id/tvCarros"
         android:id="@+id/spCarros"
         android:layout_width="335dp"
         android:layout_height="45dp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:id="@+id/btnSalvarLavagem"
@@ -72,7 +98,6 @@
         android:layout_marginTop="50dp"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spCarros" />
 

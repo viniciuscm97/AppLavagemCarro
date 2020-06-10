@@ -42,7 +42,7 @@
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNome" />
+        app:layout_constraintTop_toBottomOf="@+id/etNomeFuncionario" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,10 +50,7 @@ public class LavagensActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //String data = getIntent().getExtras().getString("Listaselecionado");
-
                 Intent intent = new Intent(LavagensActivity.this, FormLavagensActivity.class);
-                //intent.putExtra("listaToAdd",data);
                 startActivity( intent );
             }
         });
