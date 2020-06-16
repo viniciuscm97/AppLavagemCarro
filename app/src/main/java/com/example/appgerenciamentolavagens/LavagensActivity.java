@@ -31,7 +31,6 @@ public class LavagensActivity extends AppCompatActivity {
     private ListView lvLavagens;
 
     private List<Lavagens> lavagens;
-    private FirebaseDatabase database;
     private DatabaseReference reference;
     private ChildEventListener childEventListener;
     private Query query;
@@ -81,7 +80,7 @@ public class LavagensActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Lavagens l = new Lavagens();
                 l.id = dataSnapshot.getKey();
-                l.dataEntrega = dataSnapshot.child("dataEntrega").getValue(String.class);
+                l.data_entrega = dataSnapshot.child("dataEntrega").getValue(String.class);
 
 
                 lavagens.add( l );

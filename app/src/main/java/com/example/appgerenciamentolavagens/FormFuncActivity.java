@@ -10,6 +10,9 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FormFuncActivity extends AppCompatActivity {
 
     private EditText etNome;
@@ -38,10 +41,15 @@ public class FormFuncActivity extends AppCompatActivity {
     private void salvarFuncionario() {
         String nome = etNome.getText().toString();
 
+        SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
+        Date data = new Date();
+        String data_cadastro = formataData.format(data);
+
         if(!nome.isEmpty()){
             Funcionarios f = new Funcionarios();
 
             f.nome = nome;
+            f.data_cadastro = data_cadastro;
 
             reference = FirebaseDatabase.getInstance().getReference();
 

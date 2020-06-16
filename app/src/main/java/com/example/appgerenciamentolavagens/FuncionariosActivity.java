@@ -30,7 +30,6 @@ public class FuncionariosActivity extends AppCompatActivity {
     private ListView lvFuncionarios;
 
     private List<Funcionarios> funcionarios;
-    private FirebaseDatabase database;
     private DatabaseReference reference;
     private ChildEventListener childEventListener;
     private Query query;
