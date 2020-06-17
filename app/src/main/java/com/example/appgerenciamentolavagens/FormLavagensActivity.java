@@ -42,7 +42,6 @@ public class FormLavagensActivity extends AppCompatActivity {
     private List<Funcionarios> funcionarios;
     private ArrayAdapter<Funcionarios> adapterFuncionarios;
 
-    //private String idCarros, idFuncionarios;
     private Carros carroSelecionado;
     private Funcionarios funcionarioSelecionado;
 
@@ -207,6 +206,7 @@ public class FormLavagensActivity extends AppCompatActivity {
     private void salvarLavagem() {
 
         String valor = etValorLavagem.getText().toString();
+        String dataEntrega = etDataEntrega.getText().toString();
 
         SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
         Date data = new Date();
@@ -220,6 +220,7 @@ public class FormLavagensActivity extends AppCompatActivity {
             Lavagens l = new Lavagens();
             l.valor = preco;
             l.data_cadastro = data_cadastro;
+            l.data_entrega = dataEntrega;
             l.carro = carroSelecionado;
             l.funcionario = funcionarioSelecionado;
 

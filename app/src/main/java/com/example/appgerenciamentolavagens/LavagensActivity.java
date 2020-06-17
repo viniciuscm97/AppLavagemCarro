@@ -80,7 +80,12 @@ public class LavagensActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Lavagens l = new Lavagens();
                 l.id = dataSnapshot.getKey();
-                l.data_entrega = dataSnapshot.child("dataEntrega").getValue(String.class);
+                l.data_entrega = dataSnapshot.child("data_entrega").getValue(String.class);
+                l.data_cadastro = dataSnapshot.child("data_cadastro").getValue(String.class);
+                l.valor = dataSnapshot.child("valor").getValue(Double.class);
+                l.carro = dataSnapshot.child("carro").getValue(Carros.class);
+                l.funcionario = dataSnapshot.child("funcionario").getValue(Funcionarios.class);
+
 
 
                 lavagens.add( l );
