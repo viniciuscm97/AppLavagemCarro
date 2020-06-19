@@ -3,14 +3,20 @@ package com.example.appgerenciamentolavagens;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -19,15 +25,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class FormLavagensActivity extends AppCompatActivity {
-    private EditText etDataEntrega, etValorLavagem,etQuantidadeLavagem;
-    private Button btnSalvarLavagem;
+public class FormLavagensActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+
+    private EditText  etValorLavagem;
+    private Button btnSalvarLavagem, btnDatePicker, btnTimePicker;
     private Spinner spFuncionarios,spCarros;
+
+    private String dataEntrega,horarioEntrega;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -50,13 +61,31 @@ public class FormLavagensActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_lavagens);
 
-        etDataEntrega = findViewById(R.id.etDataEntrega);
+
         etValorLavagem = findViewById(R.id.etValorLavagem);
 
         spFuncionarios = findViewById(R.id.spFuncionarios);
         spCarros = findViewById(R.id.spCarros);
 
         btnSalvarLavagem= findViewById(R.id.btnSalvarLavagem);
+        btnDatePicker= findViewById(R.id.btnDatePicker);
+        btnTimePicker= findViewById(R.id.btnTimePicker);
+
+        btnTimePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment timePicker = new TimerPickerFragment();
+                timePicker.show(getSupportFragmentManager(),"time picker");
+            }
+        });
+
+        btnDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+            }
+        });
 
         carros = new ArrayList<>();
         adapterCarros = new ArrayAdapter<Carros>(
@@ -103,8 +132,21 @@ public class FormLavagensActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        horarioEntrega = hourOfDay+":"+minute;
 
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        dataEntrega = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
     }
 
@@ -206,7 +248,7 @@ public class FormLavagensActivity extends AppCompatActivity {
     private void salvarLavagem() {
 
         String valor = etValorLavagem.getText().toString();
-        String dataEntrega = etDataEntrega.getText().toString();
+
 
         SimpleDateFormat formataData = new SimpleDateFormat("dd-MM-yyyy");
         Date data = new Date();
@@ -221,6 +263,7 @@ public class FormLavagensActivity extends AppCompatActivity {
             l.valor = preco;
             l.data_cadastro = data_cadastro;
             l.data_entrega = dataEntrega;
+            l.horario_entrega = horarioEntrega;
             l.carro = carroSelecionado;
             l.funcionario = funcionarioSelecionado;
 

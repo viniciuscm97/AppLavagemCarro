@@ -1,5 +1,6 @@
 package com.example.appgerenciamentolavagens;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,11 +15,13 @@ import com.google.firebase.database.Query;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -62,9 +65,35 @@ public class FuncionariosActivity extends AppCompatActivity {
                 FuncionariosActivity.this, android.R.layout.simple_list_item_1, funcionarios);
         lvFuncionarios.setAdapter( adapter );
 
-
+        lvFuncionarios.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                excluirFuncionario(position);
+                return true;
+            }
+        });
     }
 
+    private void excluirFuncionario(final int position) {
+
+        final Funcionarios itemSelecionado = funcionarios.get(position);
+        AlertDialog.Builder alerta = new AlertDialog.Builder(FuncionariosActivity.this);
+        alerta.setTitle("Excluir Item");
+        alerta.setIcon( android.R.drawable.ic_delete );
+        alerta.setMessage("Confirma a exclusão do Funcionário " + itemSelecionado.nome + "?");
+        alerta.setNeutralButton("Cancelar", null);
+        alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                reference.child("funcionarios").child( itemSelecionado.id ).removeValue();
+
+                funcionarios.remove( position );
+                adapter.notifyDataSetChanged();
+            }
+        });
+        alerta.show();
+    }
     @Override
     protected void onStart() {
         super.onStart();

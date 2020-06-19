@@ -1,5 +1,6 @@
 package com.example.appgerenciamentolavagens;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import com.google.firebase.database.Query;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -63,6 +65,34 @@ public class LavagensActivity extends AppCompatActivity {
                 LavagensActivity.this, android.R.layout.simple_list_item_1, lavagens);
         lvLavagens.setAdapter( adapter );
 
+        lvLavagens.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                excluirLavagem(position);
+                return true;
+            }
+        });
+    }
+
+    private void excluirLavagem(final int position) {
+
+        final Lavagens itemSelecionado = lavagens.get(position);
+        AlertDialog.Builder alerta = new AlertDialog.Builder(LavagensActivity.this);
+        alerta.setTitle("Excluir Item");
+        alerta.setIcon( android.R.drawable.ic_delete );
+        alerta.setMessage("Confirma a exclusão do Item de dados " + itemSelecionado.toString() + "?");
+        alerta.setNeutralButton("Cancelar", null);
+        alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                reference.child("lavagens").child( itemSelecionado.id ).removeValue();
+
+                lavagens.remove( position );
+                adapter.notifyDataSetChanged();
+            }
+        });
+        alerta.show();
     }
 
 

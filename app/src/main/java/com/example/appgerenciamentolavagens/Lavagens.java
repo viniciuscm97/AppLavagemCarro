@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 public class Lavagens {
 
-    public String id, data_entrega,data_cadastro ;
+    public String id, data_entrega,data_cadastro, horario_entrega ;
     public Funcionarios funcionario;
     public Carros carro;
 
