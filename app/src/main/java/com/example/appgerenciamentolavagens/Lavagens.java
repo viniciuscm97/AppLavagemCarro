@@ -13,6 +13,6 @@ public class Lavagens {
     @NonNull
     @Override
     public String toString() {
-        return "Carro: "+carro.placa+" Funcionário: "+funcionario.nome+"\nValor: "+valor+" Entrega: " +data_entrega;
+        return "Carro: "+carro.placa+"\nFuncionário: "+funcionario.nome+"\nValor: "+valor+"\nEntrega: " +data_entrega;
     }
 }

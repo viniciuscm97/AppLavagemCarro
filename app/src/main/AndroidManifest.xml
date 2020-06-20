@@ -21,6 +21,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".FormLavagensActivity" />
+        <activity android:name=".RegistrarActivity" />
         <activity
             android:name=".LavagensActivity"
             android:label="@string/title_activity_lavagens"
